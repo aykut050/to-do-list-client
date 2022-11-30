@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Todo } from '../models/todo';
 import { TodoService } from '../services/todo.service'
 
@@ -10,7 +11,7 @@ import { TodoService } from '../services/todo.service'
 export class TodoListComponent implements OnInit {
   todos?: Todo[];
 
-  constructor(private TodoService: TodoService) { }
+  constructor(private TodoService: TodoService, private router: Router) { }
 
   ngOnInit(): void {
     this.getTodos();
@@ -20,5 +21,9 @@ export class TodoListComponent implements OnInit {
     this.TodoService.getTodos().subscribe(response => {
       this.todos = response
     })
+  }
+
+  updateTodo(id: number) {
+    this.router.navigate(['update-todo', id]);
   }
 }

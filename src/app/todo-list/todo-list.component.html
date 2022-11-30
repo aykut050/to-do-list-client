@@ -5,6 +5,7 @@
                 <th scope="col">#</th>
                 <th scope="col">İş</th>
                 <th scope="col">Yapıldı Mı ?</th>
+                <th scope="col">Aksiyonlar</th>
             </tr>
         </thead>
         <tbody>
@@ -12,6 +13,9 @@
                 <th>{{ todo.id }}</th>
                 <td>{{ todo.nameTodo }}</td>
                 <td>{{ todo.isCompleted }}</td>
+                <td>
+                    <button (click)="updateTodo(todo.id)" class="btn btn-info">Düzenle</button>
+                </td>
             </tr>
         </tbody>
     </table>

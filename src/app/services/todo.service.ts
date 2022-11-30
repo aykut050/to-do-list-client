@@ -12,6 +12,18 @@ export class TodoService {
   constructor(private httpClient: HttpClient) { }
 
   getTodos(): Observable<Todo[]> {
-    return this.httpClient.get<Todo[]>(`${environment.baseURL}` + "/api/todos")
+    return this.httpClient.get<Todo[]>(`${environment.baseURL}` + "/api/todos");
+  }
+
+  addTodo(todo: Todo): Observable<Object> {
+    return this.httpClient.post(`${environment.baseURL}` + "/api/todo", todo);
+  }
+
+  getTodoById(id: number): Observable<Todo> {
+    return this.httpClient.get<Todo>(`${environment.baseURL}` + "/api/todos/" + `${id}`);
+  }
+
+  updateTodo(todo: Todo, id: number): Observable<Object> {
+    return this.httpClient.put<Object>(`${environment.baseURL}` + "/api/todos/" + `${id}`, todo);
   }
 }
